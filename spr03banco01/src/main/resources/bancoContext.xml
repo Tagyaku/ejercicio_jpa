@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:bbdd.properties"/>
+
+
+
+<bean id="bancoVista" class="vista.BancoVistaImpl">
+    <property name="bancoNegocio" ref="bancoNegocio"/>
+</bean>
+
+    <bean id="bancoDao" class="persistencia.BancoDaoImpl">
+    </bean>
+
+    <bean id="bancoNegocio" class="negocio.BancoNegocioImpl">
+        <property name="bancoDao" ref="bancoDao"/>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="url" value="${bbdd.url}"/>
+        <property name="driverClassName" value="${bbdd.driver}"/>
+        <property name="username" value="${bbdd.user}"/>
+        <property name="password" value="${bbdd.pass}"/>
+    </bean>
+
+</beans>

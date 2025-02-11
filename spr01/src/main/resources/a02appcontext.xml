@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+		 
+		 
+		 
+		<bean id="s01" class="es.cursosprhib.spr01xml.servicios.Servicio01Impl"></bean>
+
+		<bean id="sPrincipal" class="es.cursosprhib.spr01xml.servicios.ServicioPrincipal">
+		
+			<property name="descripcion" value="Servicio Principal"></property>
+			<property name="s01" ref="s01new"></property>
+			
+		
+		</bean>
+		
+		<bean id="s01new" class="es.cursosprhib.spr01xml.servicios.Servicio01ImplV2"></bean>
+
+
+
+
+</beans>
